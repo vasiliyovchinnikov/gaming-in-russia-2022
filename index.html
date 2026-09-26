@@ -173,6 +173,11 @@ function baseOpt(){const ax={axisLine:{lineStyle:{color:'#3a4657'}},axisLabel:{c
   xAxis:Object.assign({type:'value'},ax,{axisLabel:{color:'#8b96a5',fontSize:10,formatter:'{value}%'}}),
   yAxis:Object.assign({type:'category'},ax,{axisLabel:{color:'#c9d2dd',fontSize:12,width:150,overflow:'truncate'}})}}
 function barOpt(cats,vals,color){const o=baseOpt();o.yAxis.data=cats;o.series=[{type:'bar',data:vals,itemStyle:{color:color,borderRadius:[0,4,4,0]},barMaxWidth:22,label:{show:true,position:'right',color:'#aeb8c4',fontSize:11,formatter:p=>p.value+'%'}}];return o}
+/* легенда, переносящаяся на мобиле: считаем строки и отодвигаем grid.top */
+function legendTop(el,items,fs){fs=fs||10.5;const w=(el&&el.clientWidth)||360;let rows=1,x=0;
+ for(const it of items){const iw=String(it).length*fs*0.62+30;const nx=x?x+14+iw:iw;
+  if(nx>w&&x>0){rows++;x=iw}else x=nx}
+ return rows>1?12+rows*16+6:34}
 function kpiHtml(v,l){return `<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`}
 
 /* ---------- i18n ---------- */
@@ -316,7 +321,10 @@ function refresh(){
  const cats=[];for(let i=0;i<labels.length;i++)cats.push(labels[i]);
  title('freq',T('Игровой статус','Gaming status'),T('Игровой статус','Gaming status'));
  basetxt('freq',T('База: все респонденты (n=1600), %','Base: all respondents (n=1,600), %')+' · '+cutLbl());
- {const o=baseOpt();o.yAxis.data=cats;o.legend={textStyle:{color:'#8b96a5',fontSize:11},top:0};
+ {const o=baseOpt();o.yAxis.data=cats;
+  const itemsF=stacks.map(s=>T(s.ru,s.en));const elF=document.getElementById('ch-freq');
+  o.legend={textStyle:{color:'#8b96a5',fontSize:11},top:0,type:'scroll'};
+  o.grid.top=legendTop(elF,itemsF,11);
   o.series=stacks.map(s=>({name:T(s.ru,s.en),type:'bar',stack:'f',data:F[s.k][cut].map(v=>+v.toFixed(1)),itemStyle:{color:s.c},barMaxWidth:24}));
   reg('ch-freq',o);}
 
@@ -386,7 +394,7 @@ function refresh(){
   const mns=[D.spend.console.mean,D.spend.pc.mean,D.spend.mobile.mean];
   const mds=[D.spend.console.median,D.spend.pc.median,D.spend.mobile.median];
   const o={backgroundColor:'transparent',
-   legend:{top:0,textStyle:{color:'#8b96a5',fontSize:11}},
+   legend:{top:0,textStyle:{color:'#8b96a5',fontSize:11},type:'scroll'},
    tooltip:{trigger:'axis',backgroundColor:'#1c232e',borderColor:'#262f3d',textStyle:{color:'#e8ecf1'}},
    grid:{left:8,right:30,top:34,bottom:8,containLabel:true},
    xAxis:{type:'category',data:cats3,axisLabel:{color:'#c9d2dd',fontSize:12},axisLine:{lineStyle:{color:'#3a4657'}}},
@@ -431,7 +439,10 @@ function refresh(){
     const g=gamerRows.reduce((a,k)=>a+F[k][cut][i],0);
     data[0].push(+g.toFixed(1));data[1].push(+F.family[cut][i].toFixed(1));data[2].push(+F.none[cut][i].toFixed(1));
   }
-  const o2=baseOpt();o2.yAxis.data=cats;o2.legend={top:0,textStyle:{color:'#8b96a5',fontSize:10}};
+  const o2=baseOpt();o2.yAxis.data=cats;
+  const elG=document.getElementById('ch-famgame');
+  o2.legend={top:0,textStyle:{color:'#8b96a5',fontSize:10},type:'scroll'};
+  o2.grid.top=legendTop(elG,rows,10);
   o2.series=[{name:rows[0],type:'bar',stack:'x',data:data[0],itemStyle:{color:'#e05e6e'},barMaxWidth:24},
    {name:rows[1],type:'bar',stack:'x',data:data[1],itemStyle:{color:'#6a7590'},barMaxWidth:24},
    {name:rows[2],type:'bar',stack:'x',data:data[2],itemStyle:{color:'#39435a'},barMaxWidth:24}];
