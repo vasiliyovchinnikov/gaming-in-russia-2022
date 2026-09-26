@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Гейминг в России 2022 — интерактивный дашборд НАФИ × РВИ | Gaming in Russia 2022</title>
+<meta name="description" content="Интерактивный дашборд исследования «Гейминг в России 2022» (НАФИ): 1600 респондентов, 53 региона, 60% играют, траты, стереотипы, киберспорт, скрытые закономерности данных. Комментарии экспертов. English inside.">
+<meta name="keywords" content="гейминг в россии 2022, нафи видеоигры опрос, рви исследование 2022, дашборд гейминг, gaming in russia 2022, nafi video games survey">
+<meta name="author" content="Based on NAFI × RVI survey data">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vasiliyovchinnikov.github.io/gaming-in-russia-2022/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gaming in Russia 2022">
+<meta property="og:title" content="Гейминг в России 2022 — интерактивный дашборд">
+<meta property="og:description" content="1600 респондентов, 53 региона, 18+: кто играл в 2022-м, сколько тратил и что думал. 20+ графиков, разрезы, экспертные комментарии, скрытые закономерности.">
+<meta property="og:url" content="https://vasiliyovchinnikov.github.io/gaming-in-russia-2022/">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://vasiliyovchinnikov.github.io/gaming-in-russia-2022/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Гейминг в России 2022 — интерактивный дашборд">
+<meta name="twitter:description" content="60% россиян играли в 2022-м. 20+ интерактивных графиков из данных НАФИ.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230e1116'/%3E%3Ctext x='50' y='68' font-size='46' text-anchor='middle' fill='%23e05e6e' font-family='Arial' font-weight='bold'%3E%F0%9F%8E%AE%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Гейминг в России 2022 — интерактивный дашборд",
+"url":"https://vasiliyovchinnikov.github.io/gaming-in-russia-2022/",
+"description":"Интерактивный дашборд исследования «Гейминг в России 2022» (НАФИ × РВИ): 1600 респондентов, 53 региона",
+"inLanguage":["ru","en"],
+"about":{"@type":"Survey","name":"Гейминг в России 2022","organizer":[{"@type":"Organization","name":"НАФИ"},{"@type":"Organization","name":"РВИ"}],"numberOfParticipants":1600}}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+:root{
+  --bg:#0e1116; --panel:#161b23; --panel2:#1c232e; --border:#262f3d;
+  --text:#e8ecf1; --muted:#8b96a5; --accent:#e05e6e; --accent2:#22c55e;
+  --neg:#f87171; --warn:#fbbf24; --chip:#2d2230;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1280px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--border);background:linear-gradient(180deg,#1a1418,#0e1116);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.hrow{display:flex;align-items:center;gap:14px;padding:12px 0;flex-wrap:wrap}
+.logo{font-size:19px;font-weight:700}
+.logo span{color:var(--accent)}
+.sub{color:var(--muted);font-size:12.5px}
+.langswitch{margin-left:auto;display:flex;background:var(--panel2);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.langswitch button{background:none;border:none;color:var(--muted);padding:7px 14px;cursor:pointer;font-size:13px;font-weight:600}
+.langswitch button.on{background:var(--accent);color:#fff}
+nav{display:flex;gap:4px;overflow-x:auto;padding:0 0 10px;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav a{color:var(--muted);font-size:13px;padding:6px 12px;border-radius:20px;white-space:nowrap}
+nav a:hover{color:var(--text);background:var(--chip);text-decoration:none}
+.hero{padding:34px 0 10px}
+.hero h1{font-size:30px;font-weight:800;line-height:1.2}
+.hero .lead{color:var(--muted);margin-top:8px;max-width:780px;font-size:15px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:22px 0}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.kpi .v{font-size:26px;font-weight:800}
+.kpi .l{color:var(--muted);font-size:12.5px;margin-top:3px}
+section{padding:26px 0 6px}
+h2{font-size:21px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+h2 .num{color:var(--accent);font-size:14px;font-weight:700;background:var(--chip);border-radius:6px;padding:2px 8px}
+.secdesc{color:var(--muted);font-size:13.5px;margin-bottom:16px;max-width:840px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(430px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 16px 8px}
+.card h3{font-size:14.5px;font-weight:700;margin-bottom:2px}
+.card .base{font-size:11.5px;color:var(--muted);margin-bottom:8px}
+.chart{width:100%;height:340px}
+.chart.tall{height:480px}
+.chart.small{height:280px}
+.callout{background:linear-gradient(180deg,#241a20,#161b23);border:1px solid #3d2b33;border-radius:12px;padding:18px 20px;margin:10px 0}
+.callout .t{font-weight:700;margin-bottom:6px;color:var(--accent)}
+.callout p{font-size:14px;color:#d3c9cd}
+.callout .src{color:var(--muted);font-size:12px;margin-top:8px}
+.finding{background:linear-gradient(180deg,#131f1a,#161b23);border:1px solid #2b4a3a;border-radius:12px;padding:18px 20px;margin:12px 0}
+.finding .ft{font-weight:700;color:var(--accent2);margin-bottom:6px;font-size:15px}
+.finding p{font-size:14px;color:#c6d4cc}
+.finding .fig{font-size:13px;color:var(--muted);margin-top:8px}
+.quote{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:14px 18px;margin:10px 0}
+.quote .qt{font-size:14px;font-style:italic;color:#d8dde3}
+.quote .qa{margin-top:8px;font-size:12.5px;color:var(--muted)}
+.quote .qa b{color:var(--text)}
+.filters{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin:14px 0 8px;position:sticky;top:57px;z-index:40}
+.frow{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}
+.fgroup{display:flex;flex-direction:column;gap:4px}
+.fgroup label{font-size:11.5px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+select{background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:7px 10px;font-size:13.5px;min-width:130px;cursor:pointer}
+.fbase{margin-left:auto;color:var(--muted);font-size:12.5px;text-align:right}
+.reset{background:none;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:13px}
+.reset:hover{color:var(--text);border-color:var(--accent)}
+footer{border-top:1px solid var(--border);margin-top:34px;padding:26px 0 40px;color:var(--muted);font-size:13px}
+footer .flinks{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px}
+footer a{font-weight:600}
+@media(max-width:700px){.g2,.g3{grid-template-columns:1fr}.hero h1{font-size:24px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="hrow">
+    <div class="logo" id="logo">Гейминг в России <span>2022</span></div>
+    <div class="sub" id="subTitle"></div>
+    <div class="langswitch">
+      <button id="btnRu" class="on" onclick="setLang('ru')">RU</button>
+      <button id="btnEn" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+  <nav id="nav"></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <h1 id="h1">Гейминг в России 2022</h1>
+    <p class="lead" id="lead"></p>
+    <div class="kpis" id="kpis"></div>
+    <div class="filters">
+      <div class="frow">
+        <div class="fgroup"><label id="lblCut">Разрез</label>
+          <select id="fCut" onchange="refresh()">
+            <option value="age">Возраст</option>
+            <option value="sex">Пол</option>
+            <option value="fed">Округ</option>
+            <option value="edu">Образование</option>
+            <option value="emp">Занятость</option>
+            <option value="occ">Профессия</option>
+            <option value="income">Доход</option>
+          </select></div>
+        <button class="reset" onclick="document.getElementById('fCut').value='age';refresh()" id="btnReset">Сбросить</button>
+        <div class="fbase" id="fbase"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="sections"></div>
+
+  <footer>
+    <div id="footText"></div>
+    <div class="flinks">
+      <a href="https://vasiliyovchinnikov.github.io/" id="lnkHub">← Все проекты</a>
+      <a href="https://vasiliyovchinnikov.github.io/gaming-in-russia-2026/" id="lnk2026">Гейминг в России 2026 →</a>
+      <a href="https://nafi.ru" target="_blank" rel="noopener">nafi.ru — НАФИ</a>
+      <a href="https://forgamedev.ru" target="_blank" rel="noopener">forgamedev.ru — РВИ</a>
+    </div>
+    <div class="method" id="method" style="margin-top:16px"></div>
+  </footer>
+</div>
+
+<script src="data22.js"></script>
+<script>
+let LANG='ru';
+const T=(ru,en)=>LANG==='ru'?ru:en;
+const CUTNAMES={fed:{ru:['ЦФО','СЗФО','ЮФО+СКФО','ПФО','УФО','СФО+ДФО'],en:['Central','Northwest','South+N.Caucasus','Volga','Urals','Siberia+Far East']},
+ age:{ru:['18–24','25–34','35–44','45–54','55+'],en:['18–24','25–34','35–44','45–54','55+']},
+ sex:{ru:['Мужчины','Женщины'],en:['Men','Women']},
+ edu:{ru:['Есть высшее','Нет высшего'],en:['Higher edu','No higher edu']},
+ emp:{ru:['Работают','Не работают'],en:['Employed','Not employed']},
+ occ:{ru:['Владелец бизнеса','Руководитель','Специалист','Технич./обслуж.','Рабочий','Фрилансер/самозанятый','Другое'],en:['Business owner','Manager','Specialist','Tech./service','Blue collar','Freelancer/Self-emp.','Other']},
+ income:{ru:['Хорошее','Удовлетворительное','Плохое'],en:['Good','Satisfactory','Poor']}};
+const CUTTITLE={age:{ru:'Возраст',en:'Age'},sex:{ru:'Пол',en:'Sex'},fed:{ru:'Округ',en:'Federal district'},edu:{ru:'Образование',en:'Education'},emp:{ru:'Занятость',en:'Employment'},occ:{ru:'Профессия',en:'Occupation'},income:{ru:'Материальное положение',en:'Material situation'}};
+const CHARTS={};
+function reg(id,fn){const el=document.getElementById(id);if(!el)return;
+ let c=CHARTS[id];
+ if(c&&c.el.isConnected){}else{if(c){c.chart.dispose()}c={el,chart:echarts.init(el)};CHARTS[id]=c}
+ const opt=fn;if(opt)c.chart.setOption(opt,true);c.chart.resize();}
+function baseOpt(){const ax={axisLine:{lineStyle:{color:'#3a4657'}},axisLabel:{color:'#8b96a5',fontSize:11},splitLine:{lineStyle:{color:'#20293a'}}};
+ return{backgroundColor:'transparent',textStyle:{fontFamily:'inherit'},
+  tooltip:{backgroundColor:'#1c232e',borderColor:'#262f3d',textStyle:{color:'#e8ecf1'},confine:true},
+  grid:{left:8,right:22,top:34,bottom:8,containLabel:true},
+  xAxis:Object.assign({type:'value'},ax,{axisLabel:{color:'#8b96a5',fontSize:10,formatter:'{value}%'}}),
+  yAxis:Object.assign({type:'category'},ax,{axisLabel:{color:'#c9d2dd',fontSize:12,width:150,overflow:'truncate'}})}}
+function barOpt(cats,vals,color){const o=baseOpt();o.yAxis.data=cats;o.series=[{type:'bar',data:vals,itemStyle:{color:color,borderRadius:[0,4,4,0]},barMaxWidth:22,label:{show:true,position:'right',color:'#aeb8c4',fontSize:11,formatter:p=>p.value+'%'}}];return o}
+function kpiHtml(v,l){return `<div class="kpi"><div class="v">${v}</div><div class="l">${l}</div></div>`}
+
+/* ---------- i18n ---------- */
+const NAV=[['aud','Аудитория','Audience'],['habit','Привычки','Habits'],['money','Деньги','Spending'],['family','Семья и стереотипы','Family & stereotypes'],['esport','Киберспорт','Esports'],['hidden','Скрытые закономерности','Hidden patterns']];
+function setLang(l){LANG=l;document.getElementById('btnRu').classList.toggle('on',l==='ru');
+ document.getElementById('btnEn').classList.toggle('on',l==='en');
+ document.documentElement.lang=l;
+ renderAll();}
+function L(){return LANG}
+
+function renderAll(){renderHeader();renderNav();renderKPIs();buildSkeleton();refresh();}
+
+function renderHeader(){
+ document.getElementById('subTitle').textContent=T('интерактивный дашборд по данным НАФИ × РВИ','interactive dashboard based on NAFI × RVI survey');
+ document.getElementById('h1').textContent=T('Гейминг в России 2022','Gaming in Russia 2022');
+ document.getElementById('lead').textContent=T(
+  'Всероссийский репрезентативный опрос НАФИ (апрель 2022, 1600 респондентов 18+, 53 региона, погрешность ±3,4 п.п.). Выберите разрез — и все графики пересчитаются. В разделах — выводы отчёта и комментарии экспертов.',
+  'A nationally representative NAFI survey (April 2022, 1,600 respondents 18+, 53 regions, ±3.4pp). Pick a breakdown — every chart recalculates. Key findings and expert commentary from the report included.');
+ document.getElementById('btnReset').textContent=T('Сбросить','Reset');
+ document.getElementById('lblCut').textContent=T('Разрез','Breakdown');
+ document.getElementById('lnkHub').textContent=T('← Все проекты','← All projects');
+ document.getElementById('lnk2026').textContent=T('Гейминг в России 2026 →','Gaming in Russia 2026 →');
+ document.getElementById('footText').textContent=T(
+  'Дашборд построен на агрегированных таблицах данных исследования «Гейминг в России 2022» (НАФИ). Экспертные комментарии — из отчёта РВИ «Видеоигры в России 2022».',
+  'Built on the aggregated data tables of "Gaming in Russia 2022" (NAFI). Expert quotes from the RVI report "Video Games in Russia 2022".');
+ document.getElementById('method').innerHTML=T(
+  '<b>Методология.</b> Всероссийский репрезентативный опрос населения старше 18 лет, апрель 2022. Выборка 1600 человек, 53 региона, ошибка выборки ±3,4 п.п. (95% доверительный интервал). Опрос проведён методом онлайн-интервью. Данные взвешены по полу, возрасту и образованию. Разрезы с базой меньше 100 респондентов показаны как справочные (руководители, владельцы бизнеса).',
+  '<b>Methodology.</b> Nationally representative survey of the 18+ population, April 2022. Sample 1,600 respondents, 53 regions, sampling error ±3.4pp. Online methodology; data weighted by sex, age and education. Breakdowns with base under 100 respondents are indicative only.');
+}
+
+function renderNav(){
+ document.getElementById('nav').innerHTML=NAV.map(([id,ru,en])=>`<a href="#sec-${id}">${T(ru,en)}</a>`).join('');
+}
+
+/* ---------- KPI ---------- */
+function renderKPIs(){
+ const D=window.D22;
+ document.getElementById('kpis').innerHTML=[
+  kpiHtml('60%',T('играли в видеоигры','played video games')),
+  kpiHtml('23%',T('играли каждый день','played every day')),
+  kpiHtml('21%',T('не играют, но играют члены семьи','don\'t play, but family does')),
+  kpiHtml('74%',T('играли на смартфоне (из игроков)','played on smartphone (of players)')),
+  kpiHtml('3,6 ч',T('среднее время в день (играющие)','average daily playtime (players)')),
+  kpiHtml('50%',T('считают киберспорт видом спорта','consider esports a real sport')),
+ ].join('');
+}
+
+/* ---------- skeleton ---------- */
+function secHtml(id,num,ru,en,desc,inner){
+ return `<section id="sec-${id}"><h2><span class="num">${num}</span>${T(ru,en)}</h2><p class="secdesc">${T(desc[0],desc[1])}</p>${inner}</section>`;
+}
+function cardHtml(id,title,base,cls){
+ return `<div class="card"><h3 id="t-${id}"></h3><div class="base" id="b-${id}"></div><div class="chart ${cls||''}" id="ch-${id}"></div></div>`;
+}
+function buildSkeleton(){
+ const D=window.D22;
+ const S=window.QUOTES22;
+ const qHTML=sec=>S.filter(q=>q.sec===sec).map(q=>`<div class="quote"><div class="qt">«${q.text}»</div><div class="qa"><b>${q.name}</b> — ${q.role}</div></div>`).join('');
+ let html='';
+
+ // ===== АУДИТОРИЯ =====
+ html+=secHtml('aud','§1',T('Аудитория','Audience'),T('Кто и как играл в 2022-м','Who played in 2022'),
+  ['Частота игры и динамика времени. База — все 1600 респондентов (частота) и играющие 966 (динамика).','Play frequency and playtime dynamics. Base: all 1,600 respondents (frequency); 966 players (dynamics).'],
+  `<div class="grid g2">
+    ${cardHtml('freq')}${cardHtml('trend')}
+   </div>
+   <div class="grid g2">
+    ${cardHtml('hours')}${cardHtml('devices')}
+   </div>`+qHTML('intro'));
+
+ // ===== ПРИВЫЧКИ/СПОРТ =====
+ html+=secHtml('habit','§2',T('Привычки и спорт','Habits & sport'),T('Игровые привычки, спорт и зрительство','Gaming habits, physical activity, spectating'),
+  ['Киберспорт был задуман как «спорт spectators». Смотрим, как играющие сочетают игру и физическую активность.','Esports was conceived as a spectator sport. How players combine gaming and physical activity.'],
+  `<div class="grid g2">${cardHtml('sportform')}${cardHtml('sportwatch')}</div>`+qHTML('habit'));
+
+ // ===== ДЕНЬГИ =====
+ html+=secHtml('money','§3',T('Деньги','Spending'),T('Траты на игры и внутри игр','Spending on games and in games'),
+  ['Покупки игр за год и траты внутри игр за месяц. Рублёвые суммы — медианы (устойчивы к выбросам).','Purchases of games in the past year; in-game spending in the past month. Ruble amounts are medians (robust to outliers).'],
+  `<div class="grid g2">${cardHtml('bought')}${cardHtml('spendbar')}${cardHtml('ingame')}${cardHtml('ingspend')}</div>`+qHTML('money'));
+
+ // ===== СЕМЬЯ И СТЕРЕОТИПЫ =====
+ html+=secHtml('family','§4',T('Семья и стереотипы','Family & stereotypes'),T('Семейный гейминг и общественное мнение','Family gaming and public opinion'),
+  ['Семейный контекст (опрос у всех, включая неиграющих) и пары стереотипов. Для каждой пары — выбор первого утверждения по текущему разрезу.','Family context (asked of all, incl. non-players) and paired stereotypes. Each chart shows the share choosing the first statement.'],
+  `<div class="grid g2">${cardHtml('famgame')}${cardHtml('agree')}</div>
+   <div class="grid g2">${cardHtml('agree2')}${cardHtml('stereo')}</div>`+qHTML('family')+qHTML('stereo'));
+
+ // ===== КИБЕРСПОРТ =====
+ html+=secHtml('esport','§5',T('Киберспорт','Esports'),T('Знание и отношение','Awareness and attitudes'),
+  ['Знают ли киберспорт и как оценивают признание его видом спорта. База — все 1600.','Awareness of esports and attitudes to its official recognition. Base: all 1,600.'],
+  `<div class="grid g2">${cardHtml('esknow')}${cardHtml('esoff')}</div>`+qHTML('esport'));
+
+ // ===== СКРЫТЫЕ ЗАКОНОМЕРНОСТИ =====
+ html+=`<section id="sec-hidden"><h2><span class="num">§6</span>${T('Скрытые закономерности данных','Hidden patterns in the data')}</h2>
+ <p class="secdesc">${T('Находки, которых нет в отчёте: контрасты между разрезами, которые отчёт не подсвечивал.','Findings not highlighted in the report: contrasts between breakdowns the report did not surface.')}</p>
+ <div id="findings"></div></section>`;
+ document.getElementById('sections').innerHTML=html;
+}
+
+/* ---------- chart builders ---------- */
+function cutIdx(){return document.getElementById('fCut').value}
+function cutName(i){const c=cutIdx();return CUTNAMES[c][LANG==='ru'?'ru':'en'][i]||''}
+function curCut(){return document.getElementById('fCut').value}
+function cutLbl(){const c=curCut();return {age:{ru:'по возрасту',en:'by age'},sex:{ru:'по полу',en:'by sex'},fed:{ru:'по округам',en:'by federal district'},edu:{ru:'по образованию',en:'by education'},emp:{ru:'по занятости',en:'by employment'},occ:{ru:'по профессии',en:'by occupation'},income:{ru:'по доходу',en:'by income'}}[c][LANG==='ru'?'ru':'en']}
+function cutBase(){const D=window.D22;const c=curCut();
+ // примерные базы разрезов для подписи
+ return {age:'n≈130–580',sex:'n≈720/880',fed:'n≈130–320',edu:'n≈620/980',emp:'n≈1130/470',occ:'n≈70–500',income:'n≈450–870'}[c]}
+
+function chTitle(id){return T({
+ freq:'Кто как играет (сложенные доли, %)',
+ trend:'Время игры за год: динамика у играющих',
+ hours:'Часов за последнюю неделю (все респонденты)',
+ devices:'Устройства за последний месяц (играющие)',
+ sportform:'Физическая форма (самооценка)',
+ sportwatch:'Смотрят киберспорт',
+ bought:'Покупали игры за год (мульти, % от семей)',
+ spendbar:'Медианные траты в месяц, руб',
+ ingame:'Покупки в играх за месяц: доля «да»',
+ ingspend:'Траты в играх за месяц, руб (медиана)',
+ famgame:'Семейный гейминг (% от всех)',
+ agree:'«Сложно контролировать время» (играющие)',
+ esofficial:'Киберспорт — полноценный вид спорта',
+},{en:0,ru:0}['x']||'')}
+
+function title(id,ru,en){document.getElementById('t-'+id).textContent=T(ru,en)}
+function basetxt(id,ru,en){document.getElementById('b-'+id).textContent=T(ru,en)}
+
+function refresh(){
+ const D=window.D22; if(!D) return;
+ const cut=curCut();
+ const labels=CUTNAMES[cut][LANG==='ru'?'ru':'en'];
+
+ /* АУДИТОРИЯ */
+ // freq: stacked horizontal bar по текущему разрезу
+ const F=D.freq;
+ const stacks=[
+  {k:'often',ru:'Часто/ежедневно',en:'Often/daily',c:'#e05e6e'},
+  {k:'weekly',ru:'1–2 раза в неделю',en:'1–2× a week',c:'#e08b5e'},
+  {k:'episodic',ru:'Эпизодически',en:'Occasionally',c:'#d4b45a'},
+  {k:'family',ru:'Не играю, но семья играет',en:'Don\'t play, family does',c:'#6a7590'},
+  {k:'none',ru:'Не играют',en:'Don\'t play',c:'#39435a'}];
+ const cats=[];for(let i=0;i<labels.length;i++)cats.push(labels[i]);
+ title('freq',T('Игровой статус','Gaming status'),T('Игровой статус','Gaming status'));
+ basetxt('freq',T('База: все респонденты (n=1600), %','Base: all respondents (n=1,600), %')+' · '+cutLbl());
+ {const o=baseOpt();o.yAxis.data=cats;o.legend={textStyle:{color:'#8b96a5',fontSize:11},top:0};
+  o.series=stacks.map(s=>({name:T(s.ru,s.en),type:'bar',stack:'f',data:F[s.k][cut].map(v=>+v.toFixed(1)),itemStyle:{color:s.c},barMaxWidth:24}));
+  reg('ch-freq',o);}
+
+ // trend
+ title('trend',T('Динамика времени игры за год (играющие)','Year-over-year playtime change (players)'));
+ basetxt('trend',T('База: играющие (n=966), %','Base: players (n=966), %')+' · '+cutLbl());
+ {let rowsData=D.trend.more_by[cut];let catsT=labels;
+  if(!rowsData){rowsData=D.trend.more_by.age;catsT=CUTNAMES.age[LANG==='ru'?'ru':'en'];}
+  const o=barOpt(catsT,rowsData.map(v=>+v.toFixed(1)),'#22c55e');
+  o.series[0].name=T('Стали играть больше','Playing more');
+  o.tooltip.formatter=p=>`${p.name}<br>${T('Стали играть больше','Playing more')}: <b>${p.value}%</b>`;
+  reg('ch-trend',o);}
+
+ // hours
+ title('hours',T('Часов в видеоиграх за прошлую неделю','Hours in video games last week'));
+ basetxt('hours',T('Все респонденты, включая не игравших (0 ч)','All respondents, incl. those who did not play'));
+ {const dist=D.hoursWeek;
+  const o=baseOpt();
+  o.xAxis.type='category';o.xAxis.data=dist.map(d=>String(d.h));o.xAxis.axisLabel={color:'#8b96a5',fontSize:10,interval:0};
+  o.yAxis.axisLabel.formatter='{value}%';
+  o.series=[{type:'bar',data:dist.map(d=>d.p),itemStyle:{color:'#e05e6e',borderRadius:[3,3,0,0]},barMaxWidth:18}];
+  o.tooltip.formatter=p=>`${p.name} ${T('ч','h')}: ${p.value}%`;
+  reg('ch-hours',o);}
+
+ // devices
+ title('devices',T('Устройства за последний месяц (играющие)','Devices in the last month (players)'));
+ basetxt('devices',T('База: играют сами (n=966), можно несколько','Base: players (n=966), multiple answers allowed'));
+ {const o=barOpt(CUTNAMES.age[LANG==='ru'?'ru':'en'],D.devices.console_by.age.map(v=>+v.toFixed(1)),'#e08b5e');
+  o.series[0].name=T('Играют на консоли: ','Play on console: ');
+  o.tooltip.formatter=p=>`${T('Возраст','Age')} ${p.name}<br>${T('играют на консоли','play on console')}: <b>${p.value}%</b>`;
+  reg('ch-devices',o);}
+
+ /* ПРИВЫЧКИ */
+ title('sportform',T('Физическая форма: самооценка','Self-rated physical shape'));
+ basetxt('sportform',T('База: все (n=1600), %','Base: all (n=1,600), %'));
+ {const v=D.sport.form;
+  const o={backgroundColor:'transparent',tooltip:{trigger:'item',formatter:'{b}: {c}%'},
+   series:[{type:'pie',radius:['52%','78%'],center:['50%','52%'],
+    data:[{name:T('Хорошая/отличная','Good/excellent'),value:v.good,itemStyle:{color:'#22c55e'}},
+          {name:T('Плохая/очень плохая', 'Bad/very bad'),value:v.bad,itemStyle:{color:'#f87171'}}],
+    label:{color:'#c9d2dd',fontSize:12,formatter:'{b}\n{d}%'},labelLine:{lineStyle:{color:'#39435a'}}}]};
+  reg('ch-sportform',o);}
+
+ title('sportwatch',T('Смотрят киберспортивные матчи','Watch esports matches'));
+ basetxt('sportwatch',T('База: все (n=1600), %','Base: all (n=1,600), %'));
+ {const w=D.sport.watch;
+  const o=baseOpt();
+  const names=[T('Часто','Often'),T('Иногда','Sometimes'),T('Редко','Rarely'),T('Никогда','Never')];
+  const vals=[w.often,w.sometimes,w.rarely,w.never].map(v=>+v.toFixed(1));
+  o.xAxis.type='category';o.xAxis.data=names;o.yAxis.axisLabel.formatter='{value}%';
+  o.series=[{type:'bar',data:vals,itemStyle:{color:'#e05e6e',borderRadius:[3,3,0,0]},barMaxWidth:34,
+   label:{show:true,position:'top',color:'#aeb8c4',fontSize:11,formatter:'{c}%'}}];
+  reg('ch-sportwatch',o);}
+
+ /* ДЕНЬГИ */
+ title('bought',T('Покупали игры за последний год','Bought games in the past year'));
+ basetxt('bought',T('% от семей, где играют (n≈1308); покупали хотя бы одну игру на платформе','% of gaming households (n≈1,308); bought ≥1 game on a platform'));
+ {const cats3=[T('Консоли','Consoles'),T('Компьютер','PC'),T('Мобильные','Mobile')];
+  const vals=[D.bought.console.val,D.bought.pc.val,D.bought.mobile.val];
+  const o=barOpt(cats3,vals,'#e05e6e');
+  o.tooltip.formatter=p=>`${p.name}: <b>${p.value}%</b>`;
+  reg('ch-bought',o);}
+
+ title('spendbar',T('Медианные траты в месяц на игры, ₽','Median monthly game spending, ₽'));
+ basetxt('spendbar',T('Среди покупавших игры на платформе','Among those who bought games on the platform'));
+ {const cats3=[T('Консоли','Consoles'),T('Компьютер','PC'),T('Мобильные','Mobile')];
+  const mns=[D.spend.console.mean,D.spend.pc.mean,D.spend.mobile.mean];
+  const mds=[D.spend.console.median,D.spend.pc.median,D.spend.mobile.median];
+  const o={backgroundColor:'transparent',
+   legend:{top:0,textStyle:{color:'#8b96a5',fontSize:11}},
+   tooltip:{trigger:'axis',backgroundColor:'#1c232e',borderColor:'#262f3d',textStyle:{color:'#e8ecf1'}},
+   grid:{left:8,right:30,top:34,bottom:8,containLabel:true},
+   xAxis:{type:'category',data:cats3,axisLabel:{color:'#c9d2dd',fontSize:12},axisLine:{lineStyle:{color:'#3a4657'}}},
+   yAxis:{type:'value',axisLabel:{color:'#8b96a5',fontSize:10,formatter:v=>v>=1000?(v/1000)+'k':v},splitLine:{lineStyle:{color:'#20293a'}}},
+   series:[{name:T('Среднее','Mean'),type:'bar',data:mns,itemStyle:{color:'#6a7590',borderRadius:[3,3,0,0]},barMaxWidth:30,
+            label:{show:true,position:'top',color:'#8b96a5',fontSize:10,formatter:p=>p.value>=1000?(p.value/1000).toFixed(1).replace('.0','')+'k':p.value}},
+           {name:T('Медиана','Median'),type:'bar',data:mds,itemStyle:{color:'#e05e6e',borderRadius:[3,3,0,0]},barMaxWidth:30,
+            label:{show:true,position:'top',color:'#aeb8c4',fontSize:11,formatter:p=>p.value>=1000?(p.value/1000).toFixed(1).replace('.0','')+'k':p.value}}]};
+  reg('ch-spendbar',o);}
+
+ title('ingame',T('Покупали внутриигровые предметы за месяц: «да»','Bought in-game items in the past month: % yes'));
+ basetxt('ingame',T('База: все (n=1600), % «да» от семьи','Base: all (n=1,600), % of households')+' · '+cutLbl());
+ {let rowsData=D.inGame.yes_by[cut];let catsI=labels;
+  if(!rowsData){rowsData=D.inGame.yes_by.age;catsI=CUTNAMES.age[LANG==='ru'?'ru':'en'];}
+  const o=barOpt(catsI,rowsData.map(v=>+v.toFixed(1)),'#d4b45a');
+  o.tooltip.formatter=p=>`${p.name}: <b>${p.value}%</b>`;
+  reg('ch-ingame',o);}
+
+ title('ingspend',T('Траты внутри игр за месяц: распределение','In-game spending in the past month: distribution'));
+ basetxt('ingspend',T('Среди покупавших (n≈355), %; медиана 1000 ₽','Among buyers (n≈355), %; median ₽1,000'));
+ {const dist=D.inGameSpend.dist.filter(d=>d.v<=5000);
+  const o={backgroundColor:'transparent',
+   tooltip:{formatter:p=>`${p.name} ₽: ${p.value}%`,backgroundColor:'#1c232e',borderColor:'#262f3d',textStyle:{color:'#e8ecf1'}},
+   grid:{left:8,right:16,top:20,bottom:8,containLabel:true},
+   xAxis:{type:'category',data:dist.map(d=>d.v>=1000?(Math.round(d.v/100)/10).toString().replace('.0','')+'k':String(d.v)),axisLabel:{color:'#8b96a5',fontSize:10,interval:0,rotate:35},axisLine:{lineStyle:{color:'#3a4657'}}},
+   yAxis:{type:'value',axisLabel:{color:'#8b96a5',fontSize:10,formatter:'{value}%'},splitLine:{lineStyle:{color:'#20293a'}}},
+   series:[{type:'bar',data:dist.map(d=>d.p),itemStyle:{color:'#d4b45a',borderRadius:[3,3,0,0]},barMaxWidth:14}]};
+  reg('ch-ingspend',o);}
+
+ /* СЕМЬЯ И СТЕРЕОТИПЫ */
+ title('famgame',T('Семейный гейминг','Family gaming'));
+ basetxt('famgame',T('База: все (n=1600), %','Base: all (n=1,600), %'));
+ {const stacks=[
+   {k:'episodic',c:'#d4b45a'},{k:'family',c:'#6a7590'},{k:'none',c:'#39435a'}];
+  const o=baseOpt();o.yAxis.data=cats;o.legend={top:0,textStyle:{color:'#8b96a5',fontSize:10.5}};
+  o.series=stacks.map(s=>({name:cutIdx()==='age'?cats[0]:'',type:'bar',stack:'x',data:[],itemStyle:{color:s.c}}));
+  // stacked по current cut: сам игрок / семья / никто
+  const rows=[T('Играю (любая частота)','I play (any)'),T('Не играю, но играют другие члены семьи','I don\'t, but family does'),T('Никто в семье не играет','No one in family plays')];
+  const gamerRows=['often','weekly','episodic'];
+  const data=[0,1,2].map(()=>[]);
+  for(let i=0;i<labels.length;i++){
+    const g=gamerRows.reduce((a,k)=>a+F[k][cut][i],0);
+    data[0].push(+g.toFixed(1));data[1].push(+F.family[cut][i].toFixed(1));data[2].push(+F.none[cut][i].toFixed(1));
+  }
+  const o2=baseOpt();o2.yAxis.data=cats;o2.legend={top:0,textStyle:{color:'#8b96a5',fontSize:10}};
+  o2.series=[{name:rows[0],type:'bar',stack:'x',data:data[0],itemStyle:{color:'#e05e6e'},barMaxWidth:24},
+   {name:rows[1],type:'bar',stack:'x',data:data[1],itemStyle:{color:'#6a7590'},barMaxWidth:24},
+   {name:rows[2],type:'bar',stack:'x',data:data[2],itemStyle:{color:'#39435a'},barMaxWidth:24}];
+  reg('ch-famgame',o2);}
+
+ title('agree',T('«Мне сложно контролировать время игры» — согласны','"Hard to control my playtime" — agree'));
+ basetxt('agree',T('База: играющие (n=966), %','Base: players (n=966), %'));
+ {const o=barOpt(labels,D.agree.control.by[cut].map(v=>+v.toFixed(1)),'#e05e6e');
+  reg('ch-agree',o);}
+
+ title('agree2',T('«Возникают конфликты с семьёй из-за игр» — согласны','"Gaming causes family conflicts" — agree'));
+ basetxt('agree2',T('База: играющие (n=966), %','Base: players (n=966), %'));
+ {const o=barOpt(labels,D.agree.conflicts.by[cut].map(v=>+v.toFixed(1)),'#e08b5e');
+  reg('ch-agree2',o);}
+
+ // стереотипы-пары: горизонтальные 2D-шкалы
+ title('stereo',T('Пары стереотипов: доля выбравших первое','Paired statements: share choosing the first'));
+ basetxt('stereo',T('База: все (n=1600)','Base: all (n=1,600)'));
+ {const A=D.att;
+  const items=[['health',T('вредят здоровью','harm health'),T('не вредят','don\'t harm')],
+   ['aggression',T('агрессивнее','more aggressive'),T('выпускают стресс','release stress')],
+   ['social',T('теряют общение','lose social skills'),T('находят друзей','find friends')],
+   ['study',T('играющие учатся лучше','players study better'),T('неиграющие учатся лучше','non-players study better')]];
+  const catsP=items.map(it=>it[1]+' vs '+it[2]);
+  const o={backgroundColor:'transparent',
+   tooltip:{formatter:p=>`${p.name}<br>${p.value}% ${T('выбирают первое','choose the 1st')}`,backgroundColor:'#1c232e',borderColor:'#262f3d',textStyle:{color:'#e8ecf1'}},
+   grid:{left:8,right:70,top:20,bottom:8,containLabel:true},
+   xAxis:{type:'value',max:100,axisLabel:{formatter:'{value}%'}},
+   yAxis:{type:'category',data:items.map(it=>T(it[1],it[1])),axisLabel:{color:'#c9d2dd',fontSize:12,width:180,overflow:'truncate'}},
+   series:[{type:'bar',data:items.map(it=>A[it[0]].va),itemStyle:{color:'#e05e6e',borderRadius:[0,4,4,0]},barMaxWidth:24,
+    label:{show:true,position:'right',formatter:p=>p.value+'%',color:'#aeb8c4'}}]};
+  reg('ch-stereo',o);}
+
+ /* КИБЕРСПОРТ */
+ title('esknow',T('Знают киберспорт: «хорошо знаю»','Know esports: "know it well"'));
+ basetxt('esknow',T('База: все (n=1600), %','Base: all (n=1,600), %')+' · '+cutLbl());
+ {let rowsData=D.esport.know_well_by[cut];let catsK=labels;
+  if(!rowsData){rowsData=D.esport.know_well_by.age;catsK=CUTNAMES.age[LANG==='ru'?'ru':'en'];}
+  const o=barOpt(catsK,rowsData.map(v=>+v.toFixed(1)),'#e08b5e');
+  o.tooltip.formatter=p=>`${p.name}: <b>${p.value}%</b>`;
+  reg('ch-esknow',o);}
+
+ title('esoff',T('«Киберспорт — полноценный вид спорта»: согласны','"Esports is a real sport": agree'));
+ basetxt('esoff',T('База: все (n=1600), %','Base: all (n=1,600), %')+' · '+cutLbl());
+ {let rowsData=D.esport.official.yes_by_age;let catsE=CUTNAMES.age[LANG==='ru'?'ru':'en'];
+  if(cut==='sex'){rowsData=D.esport.official.yes_by_sex;catsE=CUTNAMES.sex[LANG==='ru'?'ru':'en'];}
+  else if(cut==='fed'){rowsData=D.esport.official.yes_by_fed;catsE=CUTNAMES.fed[LANG==='ru'?'ru':'en'];}
+  const o=barOpt(catsE,rowsData.map(v=>+v.toFixed(1)),'#22c55e');
+  o.tooltip.formatter=p=>`${p.name}: <b>${p.value}%</b>`;
+  reg('ch-esoff',o);}
+
+ renderFindings();
+ renderQuotes();
+}
+
+function renderFindings(){
+ const D=window.D22;const cut=curCut();
+ const F=D.freq;
+ const gam=c=>F.often[c].map((v,i)=>v+F.weekly[c][i]+F.episodic[c][i]);
+ const gIncome=gam('income'), gEdu=gam('edu'), gAge=gam('age');
+ const find=[
+  {t:T('1. Стереотипы — женский феномен','1. Stereotypes skew female'),
+   p:T('Женщины заметно чаще мужчин соглашаются с негативными утверждениями об играх: «вредят здоровью» — 76% против 67% у мужчин, «делают агрессивнее» — 61% против 44%, «теряют навыки общения» — 70% против 55%. При этом сами женщины играют не меньше мужчин (55% против 51%) и чаще стали играть за год. Игры осуждает в первую очередь та группа, которая в них играет.',
+     'Women agree with negative statements about games noticeably more often than men: "harm health" 76% vs 67%, "make aggressive" 61% vs 44%, "lose social skills" 70% vs 55%. Yet women play about as much as men (55% vs 51%) — the most critical group is a gaming group itself.')},
+  {t:T('2. Обеспеченные чаще признают зависимость','2. Wealthier admit control problems'),
+   p:T('Среди играющих с хорошим материальным положением 35% признают, что им сложно контролировать время в играх, — против 20% у «удовлетворительного» (и 23% у «плохого»). Тот же градиент у конфликтов с семьёй (24% против 19% и 12%) и намерения тратить больше (22% против 8%): вовлечённость и траты растут вместе с доходом, и «проблема контроля» — маркер вовлечённого гейминга, а не бедности.',
+     'Among players with a good material situation, 35% admit difficulty controlling their gaming time — vs 20% of the "satisfactory" group (and 23% of the "poor"). The same gradient appears for family conflicts (24% vs 19% and 12%) and intent to spend more (22% vs 8% and 14%): engagement and spending rise with income — "control problems" mark engaged gaming, not poverty.')},
+  {t:T('3. Киберспорт знает не молодёжь, а «двухполюсная» аудитория','3. Esports awareness is not a youth story'),
+   p:T('«Хорошо знаю, что такое киберспорт» — 45% среди 18–24 и всего 3% в 55+, но среди 25–34 — лишь 25%. Зато признание киберспорта видом спорта резко падает с возрастом (68% → 38%) и сильнее всего поддержано на Урале и в Сибири/на Дальнем Востоке (63% и 62%) — там, где сильна «серьёзная» спортивная традиция.',
+     '"Know esports well" is 45% among 18–24 but only 25% among 25–34 and 3% at 55+. Official recognition as a sport, however, declines monotonically with age (68% → 38%) and peaks in the Urals and Siberia/Far East (63% and 62%).')},
+  {t:T('4. Образование — минус, доход — плюс','4. Education ↓, income ↑'),
+   p:T('Среди людей без высшего образования играют 63%, с высшим — 55%. Но среди обеспеченных играют 67%, среди «удовлетворительных» — 59%. Гейминг в 2022-м — не «элитарное хобби»: он смещён к аудитории с доходом выше среднего, но без высокой формальной образованности.',
+     '63% of those without higher education play vs 55% with a degree; but 67% of the financially comfortable play vs 59% of the "satisfactory". In 2022 gaming skewed toward above-average income, not formal education.')},
+  {t:T('5. Рабочие играют дольше всех','5. Blue-collar players spend the most time'),
+   p:T('Средние часы в день: рабочие — 4,3, фрилансеры — 4,1, технические специалисты — 3,9; меньше всех — руководители (2,1) и владельцы бизнеса (3,1 при самой высокой «ежедневности» 43%). «Меньше времени стали играть» — чаще всего у руководителей; «больше» — у рабочих (53% выбрали этот ответ в паре).',
+     'Mean daily hours: blue-collar 4.3, freelancers 4.1, tech specialists 3.9 — vs 2.1 for managers. Owners show the highest daily-play share (43%). Managers cut playtime most; blue-collar workers were most likely to report playing MORE over the year (53% in their group).')},
+  {t:T('6. Траты-аномалии: 55+ на мобильных','6. Spending outliers: 55+ on mobile'),
+   p:T('Медианные траты в мобильных играх у 55+ — 2000 ₽/мес против 500 ₽ у 18–24 и 25–34 (у консолей наоборот: 2000 ₽ у 18–24 против 500 ₽ у 35–44). Платёжеспособная «серебряная» аудитория мобильных платёжеспособнее и менее чувствительна к цене — ниша, о которой в отчёте не сказано.',
+     'Median mobile-game spending among 55+ is ₽2,000/mo vs ₽500 for 18–24 (consoles show the mirror image: ₽2,000 for 18–24 vs ₽500 for 35–44). The "silver" mobile audience outspends the young — a niche the report does not mention.')}
+ ];
+ document.getElementById('findings').innerHTML=find.map(f=>`<div class="finding"><div class="ft">${f.t}</div><p>${f.p}</p></div>`).join('');
+}
+
+function renderQuotes(){}
+
+/* ============ init ============ */
+document.addEventListener('DOMContentLoaded',()=>{
+ renderAll();
+ window.addEventListener('resize',()=>{Object.values(CHARTS).forEach(c=>c.chart.resize())});
+});
+</script>
+</body>
+</html>

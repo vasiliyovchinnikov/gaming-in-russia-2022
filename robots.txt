@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vasiliyovchinnikov.github.io/gaming-in-russia-2022/sitemap.xml
